@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include "sudokuFunction.h"
+#include "stackundo.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -110,6 +111,10 @@ class MainWindow : public QMainWindow
 		void on_Number9_clicked();
 		void on_Number0_clicked();
 
+		void on_Hint_clicked();
+
+		void on_undo_clicked();
+
 	private:
 		Ui::MainWindow *ui;
 		int position = -1;
@@ -119,5 +124,11 @@ class MainWindow : public QMainWindow
 		QPushButton *boardButton[81];
 		void afterClick();
 		void initSudoku();
+		void clearBoard();
+		void checkRow(int row);
+		void checkColumn(int col);
+		void checkBox(int startRow,int startCol);
+		int hint = 3;
+		StackUndo container;
 };
 #endif // MAINWINDOW_H

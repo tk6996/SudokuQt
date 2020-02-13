@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
-#include <QPalette>
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
@@ -94,9 +93,92 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
+void MainWindow::clearBoard()
+{
+	for(int i = 0; i < 81 ; i++)
+	{
+		boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}background-color:none;color:none;");
+	}
+}
+void MainWindow::checkRow(int row)
+{
+	for (int i = 0; i < 9 ;i++) {
+		if(position == row * 9 + i)
+			continue;
+		boardButton[row*9+i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid skyblue;background-color:#aaccddff;}");
+	}
+}
+
+void MainWindow::checkColumn(int col)
+{
+	for (int i = 0; i < 9 ;i++) {
+		if(position == col + 9 * i)
+			continue;
+		boardButton[col + 9 * i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid skyblue;background-color:#aaccddff;}");
+	}
+}
+
+void MainWindow::checkBox(int startRow, int startCol)
+{
+	for(int i = 0; i < 3;i++)
+	{
+		for (int j = 0; j < 3;j++)
+		{
+			if(position == (startRow+i)*9 + (startCol+j))
+				continue;
+			boardButton[(startRow+i)*9 + (startCol+j)]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid skyblue;background-color:#aaccddff;}");
+		}
+	}
+}
 void MainWindow::afterClick()
 {
+	if(position < 0)
+		return;
+	clearBoard();
+	checkRow(position/9);
+	checkColumn(position%9);
+	checkBox(position/9 - (position/9)%3 , (position%9) - (position%9)%3);
+	bool wrong;
+	for (int i = 0;i < 81;i++) {
+		if(unsolveBoard[i] == 0)
+			continue;
+		byte temp = unsolveBoard[i];
+		unsolveBoard[i] = 0;
+		if(!isSafe(unsolveBoard,i/9,i%9,temp) )
+		{
+			if(editBoard[i])
+				boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid #fffce4ec;background-color:pink;color:red;}");
+			else
+				boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid #fffce4ec;background-color:pink;color:black;}");
+		}
+		else
+		{
+			if(editBoard[i])
+			{
+				if(position/9 == i/9 || position%9 == i%9 || ((position/9 - (position/9)%3 == (i/9) - (i/9)%3) && ((position%9) - (position%9)%3 == (i%9) - (i%9)%3)))
+				boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid skyblue;background-color:#aaccddff;color:blue;}");
+				else boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{color:blue;}");
+			}
+			if(unsolveBoard[position] != 0 && unsolveBoard[position] ==temp)
+			{
+				if(editBoard[i])
+					boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid deepskyblue;background-color:#b4d2fa;color:blue;}");
+				else
+					boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid deepskyblue;background-color:#b4d2fa;color:black;}");
+			}
+		}
+		if(position == i)
+			wrong = !isSafe(unsolveBoard,i/9,i%9,temp);
+		unsolveBoard[i] = temp;
+	}
+	if(editBoard[position])
+	{
+		if(wrong)
+			boardButton[position]->setStyleSheet("QPushButton{margin: 1px;border:1px solid blue;background-color:#aa5cc1ff;color:red;}");
+		else boardButton[position]->setStyleSheet("QPushButton{margin: 1px;border:1px solid blue;background-color:#aa5cc1ff;color:blue;}");
 
+	}
+	else boardButton[position]->setStyleSheet("QPushButton{margin: 1px;border:1px solid blue;background-color:#aa5cc1ff;}");
 }
 
 void MainWindow::initSudoku()
@@ -117,7 +199,7 @@ void MainWindow::initSudoku()
 		}
 		else
 			editBoard[i] = true;
-		boardButton[i]->setStyleSheet("QPushButton:hover{background-color:green; color:red;}");
+		boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}");
 	}
 	afterClick();
 }
@@ -616,6 +698,7 @@ void MainWindow::on_Number1_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 1;
 	afterClick();
 	boardButton[position]->setText("1");
@@ -625,6 +708,7 @@ void MainWindow::on_Number2_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 2;
 	afterClick();
 	boardButton[position]->setText("2");
@@ -634,6 +718,7 @@ void MainWindow::on_Number3_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 3;
 	afterClick();
 	boardButton[position]->setText("3");
@@ -643,6 +728,7 @@ void MainWindow::on_Number4_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 4;
 	afterClick();
 	boardButton[position]->setText("4");
@@ -652,6 +738,7 @@ void MainWindow::on_Number5_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 5;
 	afterClick();
 	boardButton[position]->setText("5");
@@ -661,6 +748,7 @@ void MainWindow::on_Number6_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 6;
 	afterClick();
 	boardButton[position]->setText("6");
@@ -670,6 +758,7 @@ void MainWindow::on_Number7_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 7;
 	afterClick();
 	boardButton[position]->setText("7");
@@ -679,6 +768,7 @@ void MainWindow::on_Number8_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 8;
 	afterClick();
 	boardButton[position]->setText("8");
@@ -688,6 +778,7 @@ void MainWindow::on_Number9_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 9;
 	afterClick();
 	boardButton[position]->setText("9");
@@ -697,8 +788,44 @@ void MainWindow::on_Number0_clicked()
 {
 	if(!editBoard[position])
 		return;
+	container.record(position,unsolveBoard[position]);
 	unsolveBoard[position] = 0;
 	afterClick();
 	boardButton[position]->setText("");
 }
 
+
+void MainWindow::on_Hint_clicked()
+{
+	if(!editBoard[position] || hint <= 0)
+		return ;
+	editBoard[position] = false;
+	ui->amountHints->setNum(--hint);
+	unsolveBoard[position] = solveBoard[position];
+	boardButton[position]->setText(QString::number(unsolveBoard[position]));
+	afterClick();
+}
+
+void MainWindow::on_undo_clicked()
+{
+	StackUndo::DataSudoku data = container.undo();
+	if(data.position == -1)
+			return;
+	if(editBoard[data.position] == false)
+	{
+		on_undo_clicked();
+		return;
+	}
+	if(data.prev == 0)
+	{
+		unsolveBoard[data.position] = 0;
+		afterClick();
+		boardButton[data.position]->setText("");
+	}
+	else
+	{
+		unsolveBoard[data.position] = data.prev;
+		afterClick();
+		boardButton[data.position]->setText(QString::number(data.prev));
+	}
+}
