@@ -13,7 +13,7 @@ MainMenu::MainMenu(QWidget *parent) :
 
     startMenuPage();
     setWindowTitle("SUDOKU GAME");
-    setWindowIcon(QIcon("D:/Qt/Game Project/MainMenuTest/Pictures/logo.png"));
+    setWindowIcon(QIcon("D:/YEAR 2-2/Software Development Processes/SudokuQt/Pictures/logo.png"));
 
     // ADD USER CODE HERE
     ui->stackedWidget->insertWidget(1, &game);
@@ -29,7 +29,7 @@ MainMenu::~MainMenu()
 void MainMenu::startMenuPage()
 {
     // set background image
-    QPixmap bg("D:/Qt/Game Project/MainMenuTest/Pictures/BG_MuenuPage_1.png");
+    QPixmap bg("D:/YEAR 2-2/Software Development Processes/SudokuQt/Pictures/BG_MuenuPage_1.png");
     bg = bg.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background, bg);
@@ -41,7 +41,7 @@ void MainMenu::startMenuPage()
     ui->tutorialButton->setStyleSheet("QPushButton{background-color: rgb(0, 180, 0);} QPushButton:hover{color:rgb(0, 0, 120);}");
 
     // set image
-    QPixmap img("D:/Qt/Game Project/MainMenuTest/Pictures/mikky.png");
+    QPixmap img("D:/YEAR 2-2/Software Development Processes/SudokuQt/Pictures/mikky.png");
     ui->label->setGeometry(50, 400, 180, 180);
     int img_w = ui->label->width();
     int img_h = ui->label->height();
