@@ -25,10 +25,12 @@ NASM_SOURCES += sudokuFunction.asm
 
 SOURCES += \
     main.cpp \
+    mainmenu.cpp \
     mainwindow.cpp \
     stackundo.cpp
 
 HEADERS += \
+    mainmenu.h \
     mainwindow.h \
     stackundo.h \
     sudokuFunction.h
@@ -37,6 +39,7 @@ OBJECTS += \
     sudokuFunction.o
 
 FORMS += \
+    mainmenu.ui \
     mainwindow.ui
 
 # Default rules for deployment.

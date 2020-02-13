@@ -17,7 +17,6 @@ MainMenu::MainMenu(QWidget *parent) :
 
     // ADD USER CODE HERE
     ui->stackedWidget->insertWidget(1, &game);
-    //ui->stackedWidget->insertWidget(2, this);
 
     connect(&game, SIGNAL(menuClicked()), this, SLOT(moveToMenu()));
 }

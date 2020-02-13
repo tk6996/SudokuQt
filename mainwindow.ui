@@ -2151,6 +2151,22 @@
          <string>UNDO</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="menuButton">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>510</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>MENU</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
