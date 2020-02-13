@@ -18,6 +18,9 @@ class MainWindow : public QMainWindow
 		MainWindow(QWidget *parent = nullptr);
 		~MainWindow();
 
+    signals:
+        void menuClicked();
+
 	private slots:
 		void on_B0_0_clicked();
 		void on_B0_1_clicked();
@@ -115,7 +118,9 @@ class MainWindow : public QMainWindow
 
 		void on_undo_clicked();
 
-	private:
+        void on_menuButton_clicked();
+
+private:
 		Ui::MainWindow *ui;
 		int position = -1;
 		byte solveBoard[81]={0};

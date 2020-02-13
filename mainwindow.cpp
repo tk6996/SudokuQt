@@ -829,3 +829,8 @@ void MainWindow::on_undo_clicked()
 		boardButton[data.position]->setText(QString::number(data.prev));
 	}
 }
+
+void MainWindow::on_menuButton_clicked()
+{
+    emit menuClicked();
+}
