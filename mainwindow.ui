@@ -2072,7 +2072,7 @@
          <rect>
           <x>580</x>
           <y>240</y>
-          <width>160</width>
+          <width>71</width>
           <height>40</height>
          </rect>
         </property>
@@ -2086,6 +2086,69 @@
         </property>
         <property name="text">
          <string>CLEAR</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="Hint">
+        <property name="geometry">
+         <rect>
+          <x>580</x>
+          <y>300</y>
+          <width>101</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>HINT</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="amountHints">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>300</y>
+          <width>41</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">qproperty-alignment: AlignCenter;</string>
+        </property>
+        <property name="text">
+         <string>3</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="undo">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>240</y>
+          <width>71</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>UNDO</string>
         </property>
        </widget>
       </widget>

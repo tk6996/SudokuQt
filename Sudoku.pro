@@ -25,10 +25,12 @@ NASM_SOURCES += sudokuFunction.asm
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    stackundo.cpp
 
 HEADERS += \
     mainwindow.h \
+    stackundo.h \
     sudokuFunction.h
 
 OBJECTS += \
