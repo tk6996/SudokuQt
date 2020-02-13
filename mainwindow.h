@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow
 	public:
 		MainWindow(QWidget *parent = nullptr);
 		~MainWindow();
-
+		void initSudoku();
     signals:
         void menuClicked();
 
@@ -128,7 +128,6 @@ private:
 		bool editBoard[81];
 		QPushButton *boardButton[81];
 		void afterClick();
-		void initSudoku();
 		void clearBoard();
 		void checkRow(int row);
 		void checkColumn(int col);
