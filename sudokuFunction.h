@@ -1,0 +1,4 @@
+#ifndef SUDOKUFUNCTION_H
+#define SUDOKUFUNCTION_H
+
+#endif // SUDOKUFUNCTION_H
