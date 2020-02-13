@@ -34,7 +34,7 @@ private slots:
 
 private:
     Ui::MainMenu *ui;
-    MainWindow game;
+	MainWindow game;
     QPropertyAnimation *animation;
 };
 

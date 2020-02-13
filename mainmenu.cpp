@@ -16,9 +16,9 @@ MainMenu::MainMenu(QWidget *parent) :
     setWindowIcon(QIcon("D:/Qt/Game Project/MainMenuTest/Pictures/logo.png"));
 
     // ADD USER CODE HERE
-    ui->stackedWidget->insertWidget(1, &game);
+	ui->stackedWidget->insertWidget(1, &game);
 
-    connect(&game, SIGNAL(menuClicked()), this, SLOT(moveToMenu()));
+	connect(&game, SIGNAL(menuClicked()), this, SLOT(moveToMenu()));
 }
 
 MainMenu::~MainMenu()
@@ -69,8 +69,9 @@ void MainMenu::moveToMenu()
 
 void MainMenu::on_playButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
-    startGamePage();
+	game.initSudoku();
+	ui->stackedWidget->setCurrentIndex(1);
+	startGamePage();
 }
 
 void MainMenu::on_exitButton_clicked()

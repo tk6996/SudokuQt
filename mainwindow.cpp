@@ -85,7 +85,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 	boardButton[78] = ui->B8_6;
 	boardButton[79] = ui->B8_7;
 	boardButton[80] = ui->B8_8;
-	initSudoku();
 }
 
 MainWindow::~MainWindow()
@@ -183,6 +182,14 @@ void MainWindow::afterClick()
 
 void MainWindow::initSudoku()
 {
+	hint = 3;
+	container = StackUndo();
+	for (int i = 0; i < 81; i++)
+	{
+		solveBoard[i] = 0;
+		boardButton[i]->setText("");
+	}
+	ui->amountHints->setNum(hint);
 	generateSoduku(solveBoard,time(nullptr));
 	QDebug debug = qDebug();
 	std::copy(solveBoard,solveBoard+81,unsolveBoard);
