@@ -13,7 +13,8 @@ MainMenu::MainMenu(QWidget *parent) :
 
     startMenuPage();
     setWindowTitle("SUDOKU GAME");
-    setWindowIcon(QIcon("D:/YEAR 2-2/Software Development Processes/SudokuQt/Pictures/logo.png"));
+    setWindowIcon(QIcon("../SudokuQt/Pictures/logo.png"));
+    this->setFixedSize(800, 600);
 
     // ADD USER CODE HERE
 	ui->stackedWidget->insertWidget(1, &game);
@@ -29,7 +30,7 @@ MainMenu::~MainMenu()
 void MainMenu::startMenuPage()
 {
     // set background image
-    QPixmap bg("D:/YEAR 2-2/Software Development Processes/SudokuQt/Pictures/BG_MuenuPage_1.png");
+    QPixmap bg("../SudokuQt/Pictures/BG_MuenuPage_1.png");
     bg = bg.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background, bg);
@@ -41,7 +42,7 @@ void MainMenu::startMenuPage()
     ui->tutorialButton->setStyleSheet("QPushButton{background-color: rgb(0, 180, 0);} QPushButton:hover{color:rgb(0, 0, 120);}");
 
     // set image
-    QPixmap img("D:/YEAR 2-2/Software Development Processes/SudokuQt/Pictures/mikky.png");
+    QPixmap img("../SudokuQt/Pictures/mikky.png");
     ui->label->setGeometry(50, 400, 180, 180);
     int img_w = ui->label->width();
     int img_h = ui->label->height();
@@ -56,15 +57,25 @@ void MainMenu::startMenuPage()
 
 void MainMenu::startGamePage()
 {
+    QPixmap bg("../SudokuQt/Pictures/BG_gamePage.png");
+    bg = bg.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
-    palette.setBrush(QPalette::Background, Qt::white);
+    palette.setBrush(QPalette::Background, bg);
     this->setPalette(palette);
 }
 
 void MainMenu::moveToMenu()
 {
-    ui->stackedWidget->setCurrentIndex(0);
-    startMenuPage();
+    QMessageBox::StandardButton reply = QMessageBox::question(this,
+                                 "Game Over!", "Do you want to go back to MENU?",
+                                 QMessageBox::Yes | QMessageBox::No);
+    if(reply == QMessageBox::Yes) {
+        ui->stackedWidget->setCurrentIndex(0);
+        startMenuPage();
+    }
+    else {
+        qDebug() << "No is clicked";
+    }
 }
 
 void MainMenu::on_playButton_clicked()
