@@ -20,10 +20,6 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>-1</x>
-      <y>-1</y>
-      <width>801</width>
-      <height>581</height>
       <x>9</x>
       <y>9</y>
       <width>800</width>
@@ -2164,12 +2160,6 @@
      <widget class="QPushButton" name="menuButton">
       <property name="geometry">
        <rect>
-        <x>690</x>
-        <y>510</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
         <x>670</x>
         <y>480</y>
         <width>71</width>
