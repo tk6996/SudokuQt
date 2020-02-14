@@ -20,17 +20,14 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-<<<<<<< HEAD
       <x>-1</x>
       <y>-1</y>
       <width>801</width>
       <height>581</height>
-=======
       <x>9</x>
       <y>9</y>
       <width>800</width>
       <height>600</height>
->>>>>>> b3a76a084c798f99341727c18b0fcd873099b807
      </rect>
     </property>
     <widget class="QWidget" name="game">
@@ -2167,14 +2164,12 @@
      <widget class="QPushButton" name="menuButton">
       <property name="geometry">
        <rect>
-<<<<<<< HEAD
         <x>690</x>
         <y>510</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
-=======
         <x>670</x>
         <y>490</y>
         <width>71</width>
@@ -2186,7 +2181,6 @@
         <pointsize>12</pointsize>
        </font>
       </property>
->>>>>>> b3a76a084c798f99341727c18b0fcd873099b807
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
@@ -2194,8 +2188,6 @@
        <string>MENU</string>
       </property>
      </widget>
-<<<<<<< HEAD
-=======
      <widget class="QLabel" name="Time">
       <property name="geometry">
        <rect>
@@ -2220,7 +2212,6 @@ Time Left &lt;br&gt; 20:00 Min
 </string>
       </property>
      </widget>
->>>>>>> b3a76a084c798f99341727c18b0fcd873099b807
     </widget>
    </widget>
   </widget>
