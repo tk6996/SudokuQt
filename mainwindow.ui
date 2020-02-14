@@ -2160,9 +2160,9 @@
      <widget class="QPushButton" name="menuButton">
       <property name="geometry">
        <rect>
-        <x>670</x>
+        <x>580</x>
         <y>480</y>
-        <width>71</width>
+        <width>161</width>
         <height>41</height>
        </rect>
       </property>
@@ -2175,7 +2175,7 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="text">
-       <string>MENU</string>
+       <string>BACK TO MENU</string>
       </property>
      </widget>
      <widget class="QLabel" name="Time">
