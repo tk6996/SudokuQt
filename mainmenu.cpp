@@ -14,6 +14,7 @@ MainMenu::MainMenu(QWidget *parent) :
     startMenuPage();
     setWindowTitle("SUDOKU GAME");
 	setWindowIcon(QIcon("../SudokuQt/Pictures/logo.png"));
+	setFixedSize(800,600);
 
     // ADD USER CODE HERE
 	ui->stackedWidget->insertWidget(1, &game);

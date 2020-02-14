@@ -113,12 +113,10 @@ class MainWindow : public QMainWindow
 		void on_Number8_clicked();
 		void on_Number9_clicked();
 		void on_Number0_clicked();
-
 		void on_Hint_clicked();
-
 		void on_undo_clicked();
-
         void on_menuButton_clicked();
+		void update();
 
 private:
 		Ui::MainWindow *ui;
@@ -134,5 +132,7 @@ private:
 		void checkBox(int startRow,int startCol);
 		int hint = 3;
 		StackUndo container;
+		QTimer *timer;
+		int timeGame;
 };
 #endif // MAINWINDOW_H
