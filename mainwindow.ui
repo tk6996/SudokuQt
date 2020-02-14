@@ -2161,7 +2161,7 @@
       <property name="geometry">
        <rect>
         <x>670</x>
-        <y>490</y>
+        <y>480</y>
         <width>71</width>
         <height>41</height>
        </rect>
@@ -2196,7 +2196,7 @@
        <string notr="true">qproperty-alignment: AlignCenter;</string>
       </property>
       <property name="text">
-       <string>&lt;div style=&quot;text-align:center;background-color:pink;&quot;&gt;
+       <string>&lt;div style=&quot;text-align:center;&quot;&gt;
 Time Left &lt;br&gt; 20:00 Min
 &lt;/div&gt;
 </string>
