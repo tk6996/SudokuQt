@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
+#include <QTimer>
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
@@ -85,6 +86,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 	boardButton[78] = ui->B8_6;
 	boardButton[79] = ui->B8_7;
 	boardButton[80] = ui->B8_8;
+	timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+}
+
+void MainWindow::update()
+{
+	timeGame--;
+	ui->Time->setText("<div style=\"text-align:center;background-color:pink;\">\nTime Left <br> "+ QString("%1:%2").arg(timeGame/60).arg(timeGame%60,2,10,QChar('0'))+" Min\n</div>\n");
 }
 
 MainWindow::~MainWindow()
@@ -197,7 +206,7 @@ void MainWindow::initSudoku()
 		if(j == 0) debug << "\n";
 		debug << solveBoard[i];
 	}
-	randompick(unsolveBoard,50);
+	randompick(unsolveBoard,10);
 	for (int i = 0; i < 81; i++) {
 		if(unsolveBoard[i] != 0)
 		{
@@ -209,6 +218,9 @@ void MainWindow::initSudoku()
 		boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}");
 	}
 	afterClick();
+	timeGame = 1200;
+	ui->Time->setText("<div style=\"text-align:center;background-color:pink;\">\nTime Left <br> "+ QString("%1:%2").arg(timeGame/60).arg(timeGame%60,2,10,QChar('0'))+" Min\n</div>\n");
+	timer->start(1000);
 }
 
 void MainWindow::on_B0_0_clicked()
@@ -839,5 +851,6 @@ void MainWindow::on_undo_clicked()
 
 void MainWindow::on_menuButton_clicked()
 {
+	timer->stop();
     emit menuClicked();
 }
