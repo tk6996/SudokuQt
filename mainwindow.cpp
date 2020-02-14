@@ -888,6 +888,6 @@ void MainWindow::on_undo_clicked()
 
 void MainWindow::on_menuButton_clicked()
 {
-	timer->stop();
+	//timer->stop();
     emit menuClicked();
 }
