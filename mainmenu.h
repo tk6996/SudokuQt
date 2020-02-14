@@ -21,6 +21,9 @@ public:
     void startMenuPage();
     void startGamePage();
 
+signals:
+    void exitSignal();
+
 private slots:
     void moveToMenu();
 

@@ -68,6 +68,7 @@ void MainMenu::moveToMenu()
                                  "EXIT GAME", "Do you want to go back to MENU now?",
                                  QMessageBox::Yes | QMessageBox::No);
     if(reply == QMessageBox::Yes) {
+        emit exitSignal();
         ui->stackedWidget->setCurrentIndex(0);
         startMenuPage();
     }
@@ -85,18 +86,14 @@ void MainMenu::on_playButton_clicked()
 
 void MainMenu::on_exitButton_clicked()
 {
-   /* QMessageBox::StandardButton reply = QMessageBox::question(this,
+    QMessageBox::StandardButton reply = QMessageBox::question(this,
                                  "EXIT GAME", "Do you want to exit now?",
                                  QMessageBox::Yes | QMessageBox::No);
     if(reply == QMessageBox::Yes)
         QApplication::quit();
     else {
         qDebug() << "No is clicked";
-    }*/
-    QMessageBox::StandardButton message = QMessageBox::information(this, "YOU LOSE", "    GAME OVER !    ", QMessageBox::Ok);
-    if (message == QMessageBox::Ok)
-        ui->stackedWidget->setCurrentIndex(1);
-
+    }
 }
 
 void MainMenu::on_pushButton_clicked()
