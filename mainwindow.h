@@ -133,6 +133,7 @@ private:
 		int hint = 3;
 		StackUndo container;
 		QTimer *timer;
-		int timeGame;
+		unsigned int timeGame;
+		void gameOver();
 };
 #endif // MAINWINDOW_H

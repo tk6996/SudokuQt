@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QTimer>
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
@@ -93,7 +94,32 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 void MainWindow::update()
 {
 	timeGame--;
-	ui->Time->setText("<div style=\"text-align:center;background-color:pink;\">\nTime Left <br> "+ QString("%1:%2").arg(timeGame/60).arg(timeGame%60,2,10,QChar('0'))+" Min\n</div>\n");
+	ui->Time->setText("<div style=\"text-align:center;\">\nTime Left <br> "+ QString("%1:%2").arg(timeGame/60).arg(timeGame%60,2,10,QChar('0'))+" Min\n</div>\n");
+	if(timeGame == 0)
+		gameOver();
+}
+
+
+void MainWindow::gameOver()
+{
+	timer->stop();
+	QMessageBox *meg = new QMessageBox(this);
+	meg->setText("     " "Game Over" "     ");
+	meg->setStyleSheet("font-size:18px;");
+	meg->addButton(QMessageBox::Ok);
+	connect(meg->button(QMessageBox::Ok),SIGNAL(clicked()),this,SLOT(on_menuButton_clicked()));
+	meg->show();
+	ui->Number0->setEnabled(false);
+	ui->Number1->setEnabled(false);
+	ui->Number2->setEnabled(false);
+	ui->Number3->setEnabled(false);
+	ui->Number4->setEnabled(false);
+	ui->Number5->setEnabled(false);
+	ui->Number6->setEnabled(false);
+	ui->Number7->setEnabled(false);
+	ui->Number8->setEnabled(false);
+	ui->Number9->setEnabled(false);
+	ui->undo->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -218,9 +244,20 @@ void MainWindow::initSudoku()
 		boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}");
 	}
 	afterClick();
-	timeGame = 1200;
-	ui->Time->setText("<div style=\"text-align:center;background-color:pink;\">\nTime Left <br> "+ QString("%1:%2").arg(timeGame/60).arg(timeGame%60,2,10,QChar('0'))+" Min\n</div>\n");
+	timeGame = 2;
+	ui->Time->setText("<div style=\"text-align:center;\">\nTime Left <br> "+ QString("%1:%2").arg(timeGame/60).arg(timeGame%60,2,10,QChar('0'))+" Min\n</div>\n");
 	timer->start(1000);
+	ui->Number0->setEnabled(true);
+	ui->Number1->setEnabled(true);
+	ui->Number2->setEnabled(true);
+	ui->Number3->setEnabled(true);
+	ui->Number4->setEnabled(true);
+	ui->Number5->setEnabled(true);
+	ui->Number6->setEnabled(true);
+	ui->Number7->setEnabled(true);
+	ui->Number8->setEnabled(true);
+	ui->Number9->setEnabled(true);
+	ui->undo->setEnabled(true);
 }
 
 void MainWindow::on_B0_0_clicked()
