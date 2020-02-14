@@ -7,7 +7,7 @@
 
 MainMenu::MainMenu(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainMenu)
+	ui(new Ui::MainMenu) , game(this)
 {
     ui->setupUi(this);
 
@@ -68,12 +68,12 @@ void MainMenu::moveToMenu()
                                  "EXIT GAME", "Do you want to go back to MENU now?",
                                  QMessageBox::Yes | QMessageBox::No);
     if(reply == QMessageBox::Yes) {
-        emit exitSignal();
         ui->stackedWidget->setCurrentIndex(0);
         startMenuPage();
     }
     else {
         qDebug() << "No is clicked";
+		emit exitSignal();
     }
 }
 

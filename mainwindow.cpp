@@ -89,6 +89,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 	boardButton[80] = ui->B8_8;
 	timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+	connect(parent,SIGNAL(exitSignal()),this,SLOT(continueGame()));
 }
 
 void MainWindow::update()
@@ -98,13 +99,17 @@ void MainWindow::update()
 	if(timeGame == 0)
 		gameOver();
 }
-
-
+void MainWindow::continueGame()
+{
+	if(timeGame > 0 && finish == false)
+		timer->start(1000);
+}
 void MainWindow::gameOver()
 {
 	timer->stop();
 	QMessageBox *meg = new QMessageBox(this);
-	meg->setText("     " "Game Over" "     ");
+	meg->setWindowTitle(((finish) ? ("Winner"):("Loser")));
+	meg->setText(((finish) ? ("     You Win     "):("     Game Over     ")));
 	meg->setStyleSheet("font-size:18px;");
 	meg->addButton(QMessageBox::Ok);
 	connect(meg->button(QMessageBox::Ok),SIGNAL(clicked()),this,SLOT(on_menuButton_clicked()));
@@ -167,7 +172,12 @@ void MainWindow::checkBox(int startRow, int startCol)
 void MainWindow::afterClick()
 {
 	if(position < 0)
+	{
+		drawScore();
 		return;
+	}
+	bool checkfinish = true;
+	score = 0;
 	clearBoard();
 	checkRow(position/9);
 	checkColumn(position%9);
@@ -175,11 +185,15 @@ void MainWindow::afterClick()
 	bool wrong;
 	for (int i = 0;i < 81;i++) {
 		if(unsolveBoard[i] == 0)
+		{
+			checkfinish = false;
 			continue;
+		}
 		byte temp = unsolveBoard[i];
 		unsolveBoard[i] = 0;
 		if(!isSafe(unsolveBoard,i/9,i%9,temp) )
 		{
+			checkfinish = false;
 			if(editBoard[i])
 				boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid #fffce4ec;background-color:pink;color:red;}");
 			else
@@ -189,6 +203,7 @@ void MainWindow::afterClick()
 		{
 			if(editBoard[i])
 			{
+				score += 10;
 				if(position/9 == i/9 || position%9 == i%9 || ((position/9 - (position/9)%3 == (i/9) - (i/9)%3) && ((position%9) - (position%9)%3 == (i%9) - (i%9)%3)))
 				boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{margin: 1px;border:1px solid skyblue;background-color:#aaccddff;color:blue;}");
 				else boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}QPushButton{color:blue;}");
@@ -213,10 +228,22 @@ void MainWindow::afterClick()
 
 	}
 	else boardButton[position]->setStyleSheet("QPushButton{margin: 1px;border:1px solid blue;background-color:#aa5cc1ff;}");
+	drawScore();
+	if(checkfinish)
+	{
+		finish = true;
+		gameOver();
+	}
+}
+
+void MainWindow::drawScore()
+{
+	ui->scoreGame->setText(QString("<div style=\"text-align:center;\">Score %1<div>").arg(score,3,10,QChar(' ')));
 }
 
 void MainWindow::initSudoku()
 {
+	finish = false;
 	hint = 3;
 	container = StackUndo();
 	for (int i = 0; i < 81; i++)
@@ -232,7 +259,7 @@ void MainWindow::initSudoku()
 		if(j == 0) debug << "\n";
 		debug << solveBoard[i];
 	}
-	randompick(unsolveBoard,10);
+	randompick(unsolveBoard,0);
 	for (int i = 0; i < 81; i++) {
 		if(unsolveBoard[i] != 0)
 		{
@@ -244,7 +271,7 @@ void MainWindow::initSudoku()
 		boardButton[i]->setStyleSheet("QPushButton:hover{margin: 1px;border:1px solid skyblue;background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #778ff7ff, stop: 1 #775aa2db);}");
 	}
 	afterClick();
-	timeGame = 2;
+	timeGame = 1200;
 	ui->Time->setText("<div style=\"text-align:center;\">\nTime Left <br> "+ QString("%1:%2").arg(timeGame/60).arg(timeGame%60,2,10,QChar('0'))+" Min\n</div>\n");
 	timer->start(1000);
 	ui->Number0->setEnabled(true);
@@ -888,6 +915,6 @@ void MainWindow::on_undo_clicked()
 
 void MainWindow::on_menuButton_clicked()
 {
-	//timer->stop();
+	timer->stop();
     emit menuClicked();
 }

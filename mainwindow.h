@@ -20,8 +20,8 @@ class MainWindow : public QMainWindow
 		void initSudoku();
     signals:
         void menuClicked();
-
 	private slots:
+		void continueGame();
 		void on_B0_0_clicked();
 		void on_B0_1_clicked();
 		void on_B0_2_clicked();
@@ -135,5 +135,8 @@ private:
 		QTimer *timer;
 		unsigned int timeGame;
 		void gameOver();
+		int score;
+		void drawScore();
+		bool finish = false;
 };
 #endif // MAINWINDOW_H
