@@ -285,6 +285,19 @@ void MainWindow::initSudoku()
 	ui->Number8->setEnabled(true);
 	ui->Number9->setEnabled(true);
 	ui->undo->setEnabled(true);
+    ui->Number1->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
+    ui->Number2->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
+    ui->Number3->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
+    ui->Number4->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
+    ui->Number5->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
+    ui->Number6->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
+    ui->Number7->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
+    ui->Number8->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
+    ui->Number9->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
+    ui->Number0->setStyleSheet("QPushButton{margin: 1px; border:1px solid rgb(51, 204, 51);; background-color: rgb(255, 255, 204);} QPushButton:hover{margin: 1px; border:1px solid rgb(51, 204, 51);; background-color: rgb(255, 255, 153); color:rgb(51, 204, 51);}");
+    ui->undo->setStyleSheet("QPushButton{margin: 1px; border:1px solid rgb(51, 204, 51);; background-color: rgb(255, 255, 204);} QPushButton:hover{margin: 1px; border:1px solid rgb(51, 204, 51);; background-color: rgb(255, 255, 153); color:rgb(51, 204, 51);}");
+    ui->Hint->setStyleSheet("QPushButton{margin: 1px; border:1px solid rgb(51, 204, 51);; background-color: rgb(255, 255, 204);} QPushButton:hover{margin: 1px; border:1px solid rgb(51, 204, 51);; background-color: rgb(255, 255, 153); color:rgb(51, 204, 51);}");
+    ui->menuButton->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
 }
 
 void MainWindow::on_B0_0_clicked()

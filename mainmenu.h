@@ -5,6 +5,7 @@
 
 #include <QMainWindow>
 #include <QPropertyAnimation>
+#include <QPainter>
 
 namespace Ui {
 class MainMenu;
@@ -18,6 +19,7 @@ public:
     explicit MainMenu(QWidget *parent = nullptr);
     ~MainMenu();
 
+    //void paintEvent(QPaintEvent *event);
     void startMenuPage();
     void startGamePage();
 

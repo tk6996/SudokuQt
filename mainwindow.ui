@@ -2223,6 +2223,131 @@ Time Left &lt;br&gt; 20:00 Min
        <string>&lt;div style=&quot;text-align:center;&quot;&gt;Score 0&lt;div&gt;</string>
       </property>
      </widget>
+     <widget class="QLabel" name="Bg_Board">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>501</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(240, 240, 240)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>Bg_Board</zorder>
+     <zorder>B5_5</zorder>
+     <zorder>B0_8</zorder>
+     <zorder>B2_0</zorder>
+     <zorder>B4_3</zorder>
+     <zorder>B2_6</zorder>
+     <zorder>B2_5</zorder>
+     <zorder>B7_6</zorder>
+     <zorder>B7_7</zorder>
+     <zorder>B1_1</zorder>
+     <zorder>B3_0</zorder>
+     <zorder>B1_0</zorder>
+     <zorder>B3_7</zorder>
+     <zorder>B6_4</zorder>
+     <zorder>B7_4</zorder>
+     <zorder>B7_5</zorder>
+     <zorder>B1_4</zorder>
+     <zorder>B0_6</zorder>
+     <zorder>B6_8</zorder>
+     <zorder>B4_8</zorder>
+     <zorder>B3_8</zorder>
+     <zorder>B4_6</zorder>
+     <zorder>B2_8</zorder>
+     <zorder>B0_3</zorder>
+     <zorder>B5_4</zorder>
+     <zorder>B6_6</zorder>
+     <zorder>B6_5</zorder>
+     <zorder>B5_3</zorder>
+     <zorder>B1_6</zorder>
+     <zorder>B3_5</zorder>
+     <zorder>B4_4</zorder>
+     <zorder>B1_2</zorder>
+     <zorder>B1_8</zorder>
+     <zorder>line_4</zorder>
+     <zorder>B5_1</zorder>
+     <zorder>B2_3</zorder>
+     <zorder>B8_0</zorder>
+     <zorder>B8_6</zorder>
+     <zorder>B4_5</zorder>
+     <zorder>B7_8</zorder>
+     <zorder>B0_2</zorder>
+     <zorder>B6_7</zorder>
+     <zorder>B8_1</zorder>
+     <zorder>B0_1</zorder>
+     <zorder>B2_7</zorder>
+     <zorder>line_3</zorder>
+     <zorder>B4_0</zorder>
+     <zorder>B0_5</zorder>
+     <zorder>line_2</zorder>
+     <zorder>B6_1</zorder>
+     <zorder>B2_4</zorder>
+     <zorder>B0_7</zorder>
+     <zorder>B8_3</zorder>
+     <zorder>B2_2</zorder>
+     <zorder>B6_3</zorder>
+     <zorder>B5_6</zorder>
+     <zorder>B5_8</zorder>
+     <zorder>B4_1</zorder>
+     <zorder>B6_2</zorder>
+     <zorder>line_6</zorder>
+     <zorder>B0_0</zorder>
+     <zorder>B5_2</zorder>
+     <zorder>B8_8</zorder>
+     <zorder>B7_1</zorder>
+     <zorder>line</zorder>
+     <zorder>B8_7</zorder>
+     <zorder>B2_1</zorder>
+     <zorder>B8_4</zorder>
+     <zorder>B3_4</zorder>
+     <zorder>B1_7</zorder>
+     <zorder>B0_4</zorder>
+     <zorder>B3_3</zorder>
+     <zorder>B8_5</zorder>
+     <zorder>B4_7</zorder>
+     <zorder>B6_0</zorder>
+     <zorder>B8_2</zorder>
+     <zorder>B5_0</zorder>
+     <zorder>B7_3</zorder>
+     <zorder>B1_3</zorder>
+     <zorder>line_8</zorder>
+     <zorder>B3_6</zorder>
+     <zorder>B5_7</zorder>
+     <zorder>B1_5</zorder>
+     <zorder>B7_0</zorder>
+     <zorder>B4_2</zorder>
+     <zorder>B3_2</zorder>
+     <zorder>line_7</zorder>
+     <zorder>B3_1</zorder>
+     <zorder>line_5</zorder>
+     <zorder>B7_2</zorder>
+     <zorder>Number1</zorder>
+     <zorder>Number2</zorder>
+     <zorder>Number3</zorder>
+     <zorder>Number4</zorder>
+     <zorder>Number5</zorder>
+     <zorder>Number6</zorder>
+     <zorder>Number7</zorder>
+     <zorder>Number8</zorder>
+     <zorder>Number9</zorder>
+     <zorder>Number0</zorder>
+     <zorder>Hint</zorder>
+     <zorder>amountHints</zorder>
+     <zorder>undo</zorder>
+     <zorder>menuButton</zorder>
+     <zorder>Time</zorder>
+     <zorder>scoreGame</zorder>
     </widget>
    </widget>
   </widget>

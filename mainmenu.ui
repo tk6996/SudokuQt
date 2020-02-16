@@ -121,14 +121,21 @@
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>520</y>
-        <width>75</width>
-        <height>23</height>
+        <x>624</x>
+        <y>502</y>
+        <width>151</width>
+        <height>41</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
-       <string>Menu</string>
+       <string>BACK TO MENU</string>
       </property>
      </widget>
      <widget class="QTextBrowser" name="textBrowser">

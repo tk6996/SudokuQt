@@ -30,20 +30,20 @@ MainMenu::~MainMenu()
 void MainMenu::startMenuPage()
 {
     // set background image
-	QPixmap bg("../SudokuQt/Pictures/BG_MuenuPage_1.png");
+    QPixmap bg("../SudokuQt/Pictures/BG_MenuPage_2.png");
     bg = bg.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background, bg);
     this->setPalette(palette);
 
     // set button
-    ui->playButton->setStyleSheet("QPushButton{background-color: rgb(0, 180, 0);} QPushButton:hover{color:rgb(0, 0, 120);}");
-    ui->exitButton->setStyleSheet("QPushButton{background-color: rgb(0, 180, 0);} QPushButton:hover{color:rgb(0, 0, 120);}");
-    ui->tutorialButton->setStyleSheet("QPushButton{background-color: rgb(0, 180, 0);} QPushButton:hover{color:rgb(0, 0, 120);}");
-
+    ui->playButton->setStyleSheet("QPushButton{background-color: rgb(51, 204, 51);} QPushButton:hover{background-color: rgb(153, 255, 51); color:rgb(0, 0, 120);}");
+    ui->exitButton->setStyleSheet("QPushButton{background-color: rgb(51, 204, 51);} QPushButton:hover{background-color: rgb(153, 255, 51); color:rgb(0, 0, 120);}");
+    ui->tutorialButton->setStyleSheet("QPushButton{background-color: rgb(51, 204, 51);} QPushButton:hover{background-color: rgb(153, 255, 51); color:rgb(0, 0, 120);}");
+    ui->pushButton->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
     // set image
 	QPixmap img("../SudokuQt/Pictures/mikky.png");
-    ui->label->setGeometry(50, 400, 180, 180);
+    ui->label->setGeometry(50, 360, 180, 180);
     int img_w = ui->label->width();
     int img_h = ui->label->height();
     ui->label->setPixmap(img.scaled(img_w, img_h, Qt::KeepAspectRatio));
@@ -57,8 +57,10 @@ void MainMenu::startMenuPage()
 
 void MainMenu::startGamePage()
 {
+    QPixmap bg("../SudokuQt/Pictures/BG_gamePage2.jpg");
+    bg = bg.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
-    palette.setBrush(QPalette::Background, Qt::white);
+    palette.setBrush(QPalette::Background, bg);
     this->setPalette(palette);
 }
 
