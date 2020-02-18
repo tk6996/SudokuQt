@@ -259,7 +259,7 @@ void MainWindow::initSudoku()
 		if(j == 0) debug << "\n";
 		debug << solveBoard[i];
 	}
-	randompick(unsolveBoard,0);
+	randompick(unsolveBoard,5);
 	for (int i = 0; i < 81; i++) {
 		if(unsolveBoard[i] != 0)
 		{
