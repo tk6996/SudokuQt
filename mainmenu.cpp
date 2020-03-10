@@ -13,7 +13,7 @@ MainMenu::MainMenu(QWidget *parent) :
 
     startMenuPage();
     setWindowTitle("SUDOKU GAME");
-	setWindowIcon(QIcon("../SudokuQt/Pictures/logo.png"));
+	setWindowIcon(QIcon("./Pictures/logo.png"));
 	setFixedSize(800,600);
 
     // ADD USER CODE HERE
@@ -30,7 +30,7 @@ MainMenu::~MainMenu()
 void MainMenu::startMenuPage()
 {
     // set background image
-    QPixmap bg("../SudokuQt/Pictures/BG_MenuPage_2.png");
+	QPixmap bg("./Pictures/BG_MenuPage_2.png");
     bg = bg.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background, bg);
@@ -42,7 +42,7 @@ void MainMenu::startMenuPage()
     ui->tutorialButton->setStyleSheet("QPushButton{background-color: rgb(51, 204, 51);} QPushButton:hover{background-color: rgb(153, 255, 51); color:rgb(0, 0, 120);}");
     ui->pushButton->setStyleSheet("QPushButton{margin: 1px; border:1px solid white; background-color: rgb(255, 179, 255);} QPushButton:hover{margin: 1px; border:1px solid white; background-color: rgb(255, 77, 255); color:rgb(255, 255, 255);}");
     // set image
-	QPixmap img("../SudokuQt/Pictures/mikky.png");
+	QPixmap img("./Pictures/mikky.png");
     ui->label->setGeometry(50, 360, 180, 180);
     int img_w = ui->label->width();
     int img_h = ui->label->height();
@@ -57,7 +57,7 @@ void MainMenu::startMenuPage()
 
 void MainMenu::startGamePage()
 {
-    QPixmap bg("../SudokuQt/Pictures/BG_gamePage2.jpg");
+	QPixmap bg("./Pictures/BG_gamePage2.jpg");
     bg = bg.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background, bg);
