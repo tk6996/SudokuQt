@@ -29,7 +29,7 @@ MainMenu::~MainMenu()
 
 void MainMenu::startMenuPage()
 {
-    // set background image
+	// set background image
 	QPixmap bg("./Pictures/BG_MenuPage_2.png");
     bg = bg.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
@@ -74,7 +74,7 @@ void MainMenu::moveToMenu()
         startMenuPage();
     }
     else {
-        qDebug() << "No is clicked";
+		qDebug() << "No is clicked";
 		emit exitSignal();
     }
 }
@@ -93,8 +93,8 @@ void MainMenu::on_exitButton_clicked()
                                  QMessageBox::Yes | QMessageBox::No);
     if(reply == QMessageBox::Yes)
         QApplication::quit();
-    else {
-        qDebug() << "No is clicked";
+	else {
+		qDebug() << "No is clicked";
     }
 }
 

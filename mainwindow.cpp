@@ -182,7 +182,7 @@ void MainWindow::afterClick()
 	checkRow(position/9);
 	checkColumn(position%9);
 	checkBox(position/9 - (position/9)%3 , (position%9) - (position%9)%3);
-	bool wrong;
+	bool wrong = false;
 	for (int i = 0;i < 81;i++) {
 		if(unsolveBoard[i] == 0)
 		{
