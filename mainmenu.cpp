@@ -30,7 +30,7 @@ MainMenu::~MainMenu()
 void MainMenu::startMenuPage()
 {
 	// set background image
-	QPixmap bg("./Pictures/BG_MenuPage_2.png");
+    QPixmap bg("./Pictures/BG_MenuPage_2.png");
     bg = bg.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background, bg);
